@@ -10,4 +10,4 @@ const FinancesComponent = () => {
     );
 };
 
-export const FinancesPage = connect()(FinancesComponent);
+export const Finances = connect()(FinancesComponent);

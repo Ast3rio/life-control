@@ -7,11 +7,11 @@ export const App = () => {
     return (
         <div className={styles.app}>
             <Header/>
-            <main className={styles.content}>
-                <div className="container">
+            <div className="container">
+                <main className={styles.content}>
                     <AppRouter/>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 const initialState = {
-    user: true,
+    user: false,
 }
 
 export const appReducer = (state = initialState, action) => {

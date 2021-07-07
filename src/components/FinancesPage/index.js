@@ -1,3 +1,3 @@
-import {FinancesPage} from "./FinancesPage";
+import {Finances} from "./Finances";
 
-export default FinancesPage;
+export default Finances;
