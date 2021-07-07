@@ -1,6 +1,6 @@
 import {
     AUTH_PAGE_ROUTE,
-    DEALS_PAGE_ROUTE,
+    DEALS_PAGE_ROUTE, ERROR_PAGE_ROUTE,
     FINANCES_PAGE_ROUTE,
     MAIN_PAGE_ROUTE,
     THINGS_PAGE_ROUTE
@@ -10,6 +10,7 @@ import Finances from "../../FinancesPage";
 import DealsPage from "../../DealsPage";
 import ThingPage from "../../ThingsPage";
 import AuthPage from "../../AuthPage";
+import ErrorPage from "../../ErrorPage";
 
 export const publicRoutes = [
     {
@@ -34,5 +35,9 @@ export const privateRoutes = [
     {
         path: THINGS_PAGE_ROUTE,
         component: ThingPage
+    },
+    {
+        path: ERROR_PAGE_ROUTE,
+        component: ErrorPage
     }
 ]
