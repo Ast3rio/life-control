@@ -6,9 +6,11 @@ import AppRouter from "./AppRouter";
 export const App = () => {
     return (
         <div className={styles.app}>
-            <Header />
+            <Header/>
             <main className={styles.content}>
-                <AppRouter />
+                <div className="container">
+                    <AppRouter/>
+                </div>
             </main>
         </div>
     );
