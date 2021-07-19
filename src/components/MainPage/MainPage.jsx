@@ -8,9 +8,8 @@ const MainPageComponent = () => {
 
     return (
         <section className={styles.main}>
-            <img className={styles.ava} src="" alt=""/>
             <div className={styles.info}>
-                
+                Це головна на якій повинно бути дуже багато корисноЇ інфи, але я ще не знаю якоЇ
             </div>
         </section>
     );

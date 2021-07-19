@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './AuthPage.module.scss';
 import Input from "../common/Input";
 import Button from "../common/Button";
+import {NavLink} from "react-router-dom";
 
 export const AuthPage = () => {
     return (
@@ -12,7 +13,12 @@ export const AuthPage = () => {
                 <Input name='login' />
                 <label htmlFor='password'>Password</label>
                 <Input name='password' />
-                <Button label='Log-in' className={styles.auth_btn}/>
+                <div className={styles.buttons}>
+                    <Button label='Log-in' className={styles.auth_btn}/>
+                    <div className={styles.link}>
+                        <NavLink to='/register'>Register</NavLink>
+                    </div>
+                </div>
             </form>
         </section>
     );

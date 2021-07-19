@@ -17,10 +17,10 @@ const RouteElement = ({array, redirect}) => {
 
 const AppRouter = () => {
 
-    const user = useSelector(state => state.app.user);
+    const isAuth = useSelector(state => state.auth.isAuth);
 
     return (
-        user ?
+        isAuth ?
             <RouteElement array={privateRoutes} redirect={ERROR_PAGE_ROUTE} />
             :
             <RouteElement array={publicRoutes} redirect={AUTH_PAGE_ROUTE} />
