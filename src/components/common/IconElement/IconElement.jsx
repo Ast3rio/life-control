@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styles from './IconElement.module.scss';
 import PropTypes from 'prop-types';
 
-export const IconElement = ({img = '', alt = '', onClick}) => {
+export const IconElement = ({img = '', alt = '', onClick, filter = ''}) => {
 
     const [active, setActive] = useState(false);
 
@@ -11,7 +11,18 @@ export const IconElement = ({img = '', alt = '', onClick}) => {
             onClick && onClick();
             setActive(current => !current)
         }}>
-            <img className={`${styles.img} ${active && styles.active}`}  src={img} alt={alt}/>
+            {filter === 'main' && <img
+                className={`${styles.img} ${active && styles.active_main}`}
+                src={img} alt={alt}
+            />}
+            {filter === 'red' && <img
+                className={`${styles.img} ${active && styles.active_red}`}
+                src={img} alt={alt}
+            />}
+            {filter === '' && <img
+                className={`${styles.img}`}
+                src={img} alt={alt}
+            />}
         </div>
     );
 };

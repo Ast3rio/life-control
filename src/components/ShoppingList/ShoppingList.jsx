@@ -10,9 +10,9 @@ export const ShoppingList = () => {
             <MainTitle title={'Shopping list'} />
             <ul className={styles.list}>
                 <li className={styles.list_item}>
-                    <IconElement img={checkIco} alt='check'/>
+                    <IconElement img={checkIco} alt='check' filter='main'/>
                     <IconElement img={crossIco} alt='cross'/>
-                    <IconElement img={likeIco} alt='like'/>
+                    <IconElement img={likeIco} alt='like' filter='red'/>
                 </li>
             </ul>
         </section>
