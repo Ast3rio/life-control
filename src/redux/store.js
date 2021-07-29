@@ -6,12 +6,14 @@ import ReduxPromise from 'redux-promise';
 import {headerReducer} from "./reducers/headerReducer";
 import {authReducer} from "./reducers/authReducer";
 import {fileReducer} from "./reducers/fileReducer";
+import {shoppingListReducer} from "./reducers/shoppingListReducer";
 
 const reducers = combineReducers({
     app: appReducer,
     header: headerReducer,
     auth: authReducer,
-    file: fileReducer
+    file: fileReducer,
+    shopping: shoppingListReducer
 });
 
 export const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk, ReduxPromise)) );
