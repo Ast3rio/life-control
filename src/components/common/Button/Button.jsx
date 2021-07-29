@@ -5,7 +5,10 @@ export const Button = ({disabled = false, onClick, label, className = ''}) => {
     return <button
         className={`${styles.btn} ${className}`}
         disabled={disabled}
-        onClick={onClick}
+        onClick={(e) => {
+            e.preventDefault();
+            onClick();
+        }}
     >
         {label}
     </button>;

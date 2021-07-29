@@ -1,0 +1,9 @@
+@import "src/style/vars";
+
+.title{
+  margin: 0;
+  line-height: 24px;
+  font-size: 3.4rem;
+  color: $mainColor;
+  text-transform: uppercase;
+}

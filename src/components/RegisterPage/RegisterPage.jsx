@@ -19,14 +19,14 @@ const RegisterPageComponent = ({
                 <label htmlFor='email'>Email</label>
                 <Input name='email' value={email} onChange={(e) => setUserEmail(e.target.value)}/>
                 <label htmlFor='password'>Password</label>
-                <Input type='password' name='password' value={password} onChange={(e) => setUserPassword(e.target.value)}/>
+                <Input type='password' name='password' value={password}
+                       onChange={(e) => setUserPassword(e.target.value)}/>
                 <Button
                     label='Register'
                     className={styles.register_btn}
-                    onClick={(e) => {
-                        e.preventDefault();
-                        postNewUser(email, password);
-                    }}
+                    onClick={() =>
+                        postNewUser(email, password)
+                    }
                 />
             </form>
         </section>
