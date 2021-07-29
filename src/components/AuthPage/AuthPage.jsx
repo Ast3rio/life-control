@@ -3,18 +3,33 @@ import styles from './AuthPage.module.scss';
 import Input from "../common/Input";
 import Button from "../common/Button";
 import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
+import {postCurrentUser, setUserEmail, setUserPassword} from "../../redux/action-creators/authCreators";
 
-export const AuthPage = () => {
+const AuthPageComponent = ({
+                               email,
+                               password,
+                               setUserEmail,
+                               setUserPassword,
+                               postCurrentUser
+                           }) => {
     return (
         <section className={styles.auth}>
             <form className={styles.form}>
                 <h3 className={styles.title}>Auth</h3>
-                <label htmlFor='login'>Log-in</label>
-                <Input name='login' />
+                <label htmlFor='email'>Email</label>
+                <Input value={email} onChange={(e) => setUserEmail(e.target.value)} name='email'/>
                 <label htmlFor='password'>Password</label>
-                <Input name='password' />
+                <Input value={password} onChange={(e) => setUserPassword(e.target.value)} type='password'
+                       name='password'/>
                 <div className={styles.buttons}>
-                    <Button label='Log-in' className={styles.auth_btn}/>
+                    <Button
+                        onClick={() => {
+                            postCurrentUser(email,password);
+                        }}
+                        label='Log-in'
+                        className={styles.auth_btn}
+                    />
                     <div className={styles.link}>
                         <NavLink to='/register'>Register</NavLink>
                     </div>
@@ -23,3 +38,18 @@ export const AuthPage = () => {
         </section>
     );
 };
+
+const mapStateToProps = (state) => {
+    return {
+        email: state.auth.email,
+        password: state.auth.password
+    }
+}
+
+const mapDispatchToProps = {
+    setUserEmail,
+    setUserPassword,
+    postCurrentUser
+}
+
+export const AuthPage = connect(mapStateToProps, mapDispatchToProps)(AuthPageComponent);
