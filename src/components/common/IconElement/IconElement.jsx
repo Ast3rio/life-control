@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import styles from './IconElement.module.scss';
 import PropTypes from 'prop-types';
 
-export const IconElement = ({img = '', alt = '', onClick, filter = ''}) => {
+export const IconElement = ({img = '', alt = '', onClick, filter = '', status = false}) => {
 
-    const [active, setActive] = useState(false);
+    const [active, setActive] = useState(status);
 
     return (
         <div className={styles.icon} onClick={() => {
@@ -30,6 +30,8 @@ export const IconElement = ({img = '', alt = '', onClick, filter = ''}) => {
 IconElement.propTypes = {
     img: PropTypes.string,
     alt: PropTypes.string,
+    filter: PropTypes.string,
+    status: PropTypes.bool,
     onClick: PropTypes.func
 }
 
