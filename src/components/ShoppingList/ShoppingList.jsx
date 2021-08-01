@@ -13,6 +13,8 @@ import ListItem from "../common/ListItem";
 import {Button} from "../common/Button/Button";
 import {Input} from "../common/Input/Input";
 
+const DEFAULT_ITEM_VALUE = 'Write item name...';
+
 export const ShoppingListComponent = ({
                                           shoppingList,
                                           newListItemValue,
@@ -25,11 +27,21 @@ export const ShoppingListComponent = ({
     return (
         <section className={styles.shopping_list}>
             <MainTitle title={'Shopping list'}/>
-            <div className={styles.functionals}>
-                <Input name='item' value={newListItemValue} onChange={changeNewListItemValue}/>
-                <Button label='Add new item' onClick={() => addNewShoppingListItem(newListItemValue)}/>
+            <div className={styles.functional}>
+                <Input
+                    name='item'
+                    value={newListItemValue}
+                    onChange={changeNewListItemValue}
+                    defaultValue={DEFAULT_ITEM_VALUE}
+                />
+                <Button
+                    label='Add new item'
+                    onClick={() => {
+                        addNewShoppingListItem(newListItemValue)
+                        changeNewListItemValue(DEFAULT_ITEM_VALUE)
+                    }}/>
             </div>
-            <ul className={styles.list}>
+            {!!shoppingList.length ? <ul className={styles.list}>
                 {shoppingList.map(({id, ...state}) =>
                     <ListItem
                         key={id}
@@ -40,7 +52,7 @@ export const ShoppingListComponent = ({
                         {...state}
                     />
                 )}
-            </ul>
+            </ul> : 'You haven`t items in list'}
         </section>
     );
 };

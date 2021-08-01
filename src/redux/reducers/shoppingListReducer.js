@@ -13,7 +13,7 @@ const initialState = {
     shoppingList: [],
     loading: false,
     error: null,
-    newListItemValue: ''
+    newListItemValue: 'Write item name...'
 }
 
 export const shoppingListReducer = (state = initialState, action) => {

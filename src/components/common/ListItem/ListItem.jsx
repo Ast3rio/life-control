@@ -13,9 +13,6 @@ export const ListItem = ({
                              setDoneStatus,
                              deleteElement
 }) => {
-
-    console.log(setDoneStatus)
-
     return (
         <li key={id} className={styles.list_item}>
             <IconElement
@@ -45,7 +42,7 @@ export const ListItem = ({
 };
 
 ListItem.propTypes = {
-    id: PropTypes.number || PropTypes.string,
+    id: PropTypes.any,
     item: PropTypes.string,
     like: PropTypes.bool,
     done: PropTypes.bool,
