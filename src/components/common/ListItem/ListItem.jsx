@@ -7,22 +7,28 @@ import PropTypes from 'prop-types';
 export const ListItem = ({
                              id,
                              item,
+                             cost,
                              like,
                              done,
                              setLikeStatus,
                              setDoneStatus,
                              deleteElement
-}) => {
+                         }) => {
     return (
         <li key={id} className={styles.list_item}>
-            <IconElement
-                status={done}
-                img={checkIco}
-                alt='check'
-                filter='main'
-                onClick={() => setDoneStatus(id, !done)}
-            />
-            {item}
+            <div className={styles.left}>
+                <IconElement
+                    status={done}
+                    img={checkIco}
+                    alt='check'
+                    filter='main'
+                    onClick={() => setDoneStatus(id, !done)}
+                />
+                <span className={styles.item}>{item}</span>
+            </div>
+            <div>
+                0 / {cost}
+            </div>
             <div className={styles.icons}>
                 <IconElement
                     img={crossIco}

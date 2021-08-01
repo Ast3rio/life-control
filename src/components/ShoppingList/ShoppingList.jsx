@@ -3,7 +3,7 @@ import styles from './ShoppingList.module.scss';
 import {MainTitle} from "../common/MainTitle/MainTitle";
 import {connect} from "react-redux";
 import {
-    addNewShoppingListItem, changeNewListItemValue,
+    addNewShoppingListItem, changeNewListItemCostValue, changeNewListItemValue,
     deleteShoppingListElement,
     setDoneStatus,
     setLikeStatus
@@ -14,32 +14,45 @@ import {Button} from "../common/Button/Button";
 import {Input} from "../common/Input/Input";
 
 const DEFAULT_ITEM_VALUE = 'Write item name...';
+const DEFAULT_ITEM_COST_VALUE = 'Write item cost...';
 
 export const ShoppingListComponent = ({
                                           shoppingList,
                                           newListItemValue,
+                                          newListItemCostValue,
                                           deleteShoppingListElement,
                                           setLikeStatus,
                                           setDoneStatus,
                                           addNewShoppingListItem,
-                                          changeNewListItemValue
+                                          changeNewListItemValue,
+                                          changeNewListItemCostValue
                                       }) => {
     return (
         <section className={styles.shopping_list}>
             <MainTitle title={'Shopping list'}/>
             <div className={styles.functional}>
-                <Input
-                    name='item'
-                    value={newListItemValue}
-                    onChange={changeNewListItemValue}
-                    defaultValue={DEFAULT_ITEM_VALUE}
-                />
+                <div className={styles.inputs}>
+                    <Input
+                        name='item'
+                        value={newListItemValue}
+                        onChange={changeNewListItemValue}
+                        defaultValue={DEFAULT_ITEM_VALUE}
+                    />
+                    <Input
+                        name='cost'
+                        value={newListItemCostValue}
+                        onChange={changeNewListItemCostValue}
+                        defaultValue={DEFAULT_ITEM_COST_VALUE}
+                    />
+                </div>
                 <Button
                     label='Add new item'
                     onClick={() => {
-                        addNewShoppingListItem(newListItemValue)
+                        addNewShoppingListItem(newListItemValue, newListItemCostValue)
                         changeNewListItemValue(DEFAULT_ITEM_VALUE)
-                    }}/>
+                        changeNewListItemCostValue(DEFAULT_ITEM_COST_VALUE)
+                    }}
+                />
             </div>
             {!!shoppingList.length ? <ul className={styles.list}>
                 {shoppingList.map(({id, ...state}) =>
@@ -60,7 +73,8 @@ export const ShoppingListComponent = ({
 const mapStateToProps = (state) => {
     return {
         shoppingList: state.shopping.shoppingList,
-        newListItemValue: state.shopping.newListItemValue
+        newListItemValue: state.shopping.newListItemValue,
+        newListItemCostValue: state.shopping.newListItemCostValue
     }
 }
 
@@ -69,17 +83,20 @@ const mapDispatchToProps = {
     setLikeStatus,
     setDoneStatus,
     addNewShoppingListItem,
-    changeNewListItemValue
+    changeNewListItemValue,
+    changeNewListItemCostValue
 }
 
 ShoppingListComponent.propTypes = {
     shoppingList: PropTypes.array,
     newListItemValue: PropTypes.string,
+    newListItemCostValue: PropTypes.string,
     deleteShoppingListElement: PropTypes.func,
     setLikeStatus: PropTypes.func,
     setDoneStatus: PropTypes.func,
     addNewShoppingListItem: PropTypes.func,
-    changeNewListItemValue: PropTypes.func
+    changeNewListItemValue: PropTypes.func,
+    changeNewListItemCostValue: PropTypes.func
 }
 
 export const ShoppingList = connect(mapStateToProps, mapDispatchToProps)(ShoppingListComponent);

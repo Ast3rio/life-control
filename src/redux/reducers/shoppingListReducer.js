@@ -1,5 +1,5 @@
 import {
-    ADD_NEW_SHOPPING_LIST_ITEM, CHANGE_NEW_LIST_ITEM_VALUE,
+    ADD_NEW_SHOPPING_LIST_ITEM, CHANGE_NEW_LIST_ITEM_COST_VALUE, CHANGE_NEW_LIST_ITEM_VALUE,
     DELETE_SHOPPING_LIST_ELEMENT, SET_DONE_STATUS, SET_LIKE_STATUS,
     SET_SHOPPING_LIST_ERROR,
     START_LOAD_SHOPPING_LIST,
@@ -13,7 +13,8 @@ const initialState = {
     shoppingList: [],
     loading: false,
     error: null,
-    newListItemValue: 'Write item name...'
+    newListItemValue: 'Write item name...',
+    newListItemCostValue: 'Write item cost...'
 }
 
 export const shoppingListReducer = (state = initialState, action) => {
@@ -59,6 +60,7 @@ export const shoppingListReducer = (state = initialState, action) => {
                 shoppingList: _.concat(state.shoppingList, {
                     id: uuid(),
                     item: action.item,
+                    cost: action.cost,
                     like: false,
                     done: false
                 })
@@ -67,6 +69,11 @@ export const shoppingListReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newListItemValue: action.value
+            }
+        case CHANGE_NEW_LIST_ITEM_COST_VALUE:
+            return {
+                ...state,
+                newListItemCostValue: action.value
             }
         default:
             return state;
