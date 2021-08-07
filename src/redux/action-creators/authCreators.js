@@ -1,28 +1,25 @@
 import {
-    SET_ERROR_AUTH,
     SET_USER_EMAIL,
     SET_USER_PASSWORD,
-    START_REGISTER, SUCCESS_AUTH,
+    SUCCESS_AUTH,
     SUCCESS_REGISTER
 } from "../action-constants/authConstants";
 import {postRequest} from "../../api/api";
-
+import {setLoading, setErrorMessage, clearLoadingAndError} from "./actionCreators";
 
 export const setUserEmail = text => ({type: SET_USER_EMAIL, text});
 export const setUserPassword = text => ({type: SET_USER_PASSWORD, text});
-
-export const startAuthPost = () => ({type: START_REGISTER});
 export const successRegister = obj => ({type: SUCCESS_REGISTER, obj});
 export const successAuth = token => ({type: SUCCESS_AUTH, token});
-export const setErrorAuth = error => ({type: SET_ERROR_AUTH, error});
 
 export const postNewUser = (email, password) => dispatch => {
-    dispatch(startAuthPost());
+    dispatch(setLoading());
     const success = (data) => {
         dispatch(successRegister(data))
+        dispatch(clearLoadingAndError())
     }
     const setError = (error) => {
-        dispatch(setErrorAuth(error))
+        dispatch(setErrorMessage(error))
     }
     postRequest({
         url: '/auth/registration',
@@ -36,12 +33,13 @@ export const postNewUser = (email, password) => dispatch => {
 }
 
 export const postCurrentUser = (email, password) => dispatch => {
-    dispatch(startAuthPost());
+    dispatch(setLoading());
     const success = (data) => {
         dispatch(successAuth(data.token))
+        dispatch(clearLoadingAndError())
     }
     const setError = (error) => {
-        dispatch(setErrorAuth(error))
+        dispatch(setErrorMessage(error))
     }
     postRequest({
         url: '/auth/login',

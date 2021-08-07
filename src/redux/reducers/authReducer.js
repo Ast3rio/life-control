@@ -1,20 +1,17 @@
 import {
-    SET_ERROR_AUTH,
     SET_USER_EMAIL,
     SET_USER_PASSWORD,
-    START_REGISTER, SUCCESS_AUTH,
+    SUCCESS_AUTH,
     SUCCESS_REGISTER
 } from "../action-constants/authConstants";
 
 const initialState = {
-    loading: false,
-    error: null,
     currentUser: [],
     message: '',
     email: '',
     password: '',
     token: '',
-    isAuth: true
+    isAuth: false
 }
 
 export const authReducer = (state = initialState, action) => {
@@ -29,16 +26,9 @@ export const authReducer = (state = initialState, action) => {
                 ...state,
                 password: action.text
             }
-        case START_REGISTER:
-            return {
-                ...state,
-                loading: true
-            }
         case SUCCESS_REGISTER:
             return {
                 ...state,
-                loading: false,
-                error: null,
                 message: action.obj
             }
         case SUCCESS_AUTH:
@@ -49,12 +39,6 @@ export const authReducer = (state = initialState, action) => {
                 error: null,
                 token: action.token,
                 isAuth: true
-            }
-        case SET_ERROR_AUTH:
-            return {
-                ...state,
-                loading: false,
-                error: action.error
             }
         default:
             return state;

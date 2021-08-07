@@ -13,14 +13,22 @@ const AuthPageComponent = ({
                                setUserPassword,
                                postCurrentUser
                            }) => {
+
+    console.log(email)
+
     return (
         <section className={styles.auth}>
             <form className={styles.form}>
                 <h3 className={styles.title}>Auth</h3>
                 <label htmlFor='email'>Email</label>
-                <Input value={email} onChange={(e) => setUserEmail(e.target.value)} name='email'/>
+                <Input
+                    value={email}
+                    defaultValue='Write email...'
+                    onChange={setUserEmail}
+                    name='email'
+                />
                 <label htmlFor='password'>Password</label>
-                <Input value={password} onChange={(e) => setUserPassword(e.target.value)} type='password'
+                <Input value={password} onChange={setUserPassword} type='password'
                        name='password'/>
                 <div className={styles.buttons}>
                     <Button
