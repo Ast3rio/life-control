@@ -1,4 +1,4 @@
-export const MAIN_PAGE_ROUTE = '/main';
+export const MAIN_PAGE_ROUTE = '/';
 export const FINANCES_PAGE_ROUTE = '/finances';
 export const DEALS_PAGE_ROUTE = '/deals';
 export const SHOPPING_LIST_ROUTE = '/shopping-list';
