@@ -9,5 +9,5 @@ export const headerMenuData = [
     {id: 1, label: 'Main', url: MAIN_PAGE_ROUTE},
     {id: 2, label: 'Finances', url: FINANCES_PAGE_ROUTE},
     {id: 3, label: 'Deals', url: DEALS_PAGE_ROUTE},
-    {id: 4, label: 'Things', url: SHOPPING_LIST_ROUTE}
+    {id: 4, label: 'Shopping List', url: SHOPPING_LIST_ROUTE}
 ]

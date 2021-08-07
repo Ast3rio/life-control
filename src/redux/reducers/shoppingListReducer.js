@@ -60,7 +60,7 @@ export const shoppingListReducer = (state = initialState, action) => {
                 shoppingList: _.concat(state.shoppingList, {
                     id: uuid(),
                     item: action.item,
-                    cost: action.cost,
+                    cost: +action.cost,
                     like: false,
                     done: false
                 })

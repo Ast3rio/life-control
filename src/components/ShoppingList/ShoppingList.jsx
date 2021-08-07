@@ -27,6 +27,11 @@ export const ShoppingListComponent = ({
                                           changeNewListItemValue,
                                           changeNewListItemCostValue
                                       }) => {
+    const InputCostSizes = {
+        minLength: 1,
+        maxLength: 10
+    }
+
     return (
         <section className={styles.shopping_list}>
             <MainTitle title={'Shopping list'}/>
@@ -43,6 +48,8 @@ export const ShoppingListComponent = ({
                         value={newListItemCostValue}
                         onChange={changeNewListItemCostValue}
                         defaultValue={DEFAULT_ITEM_COST_VALUE}
+                        validationType='number'
+                        validationSettings={InputCostSizes}
                     />
                 </div>
                 <Button
