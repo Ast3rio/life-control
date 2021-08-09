@@ -1,0 +1,25 @@
+@import "src/style/vars";
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__form{
+    display: flex;
+    align-items: center;
+  }
+  &__input{
+    width: 600px;
+    margin-right: 20px;
+  }
+  &__text{
+    font-size: 2rem;
+    width: 400px;
+    margin-left: 20px;
+  }
+}
+
+.accent{
+  color: $mainColor;
+  font-weight: bold;
+}

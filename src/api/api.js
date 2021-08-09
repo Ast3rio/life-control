@@ -1,6 +1,9 @@
 import axios from "axios";
 
 export const baseURL = 'http://localhost:4000/api';
+export const convertApi = 'https://free.currconv.com/api/v7/convert';
+export const convertApiKey = '24902e6882bd4fdf7f4b';
+
 export const combineURLs = (baseURL, url) => {
     return url ?
         baseURL.replace(/\/+$/, '') + '/' + url.replace(/^\/+/, '')
@@ -19,5 +22,11 @@ export const postRequest = ({url, obj, success, setError, headers = {}}) => {
 export const getRequest = ({url, success, setError}) => {
     axios.get(`${combineURLs(baseURL, url)}`)
         .then(res => success(res.data))
-        .catch(error => setError())
+        .catch(error => setError(error))
+}
+
+export const convertCurrency = (fromCurrency, toCurrency, success, setError) => {
+    axios.get(`${convertApi}?q=${fromCurrency}_${toCurrency}&compact=ultra&callback=sampleCallback&apiKey=${convertApiKey}`)
+        .then(res => success(res))
+        .catch(err => console.log(err))
 }

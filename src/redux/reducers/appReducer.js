@@ -2,7 +2,8 @@ import {CLEAR_LOADING_AND_ERROR, SET_ERROR_MESSAGE, SET_LOADING} from "../action
 
 const initialState = {
     loading: false,
-    error: null
+    error: null,
+    currencyUSDtoUAH: 26,
 }
 
 export const appReducer = (state = initialState, action) => {

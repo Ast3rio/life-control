@@ -1,8 +1,6 @@
 import {
     ADD_NEW_SHOPPING_LIST_ITEM, CHANGE_NEW_LIST_ITEM_COST_VALUE, CHANGE_NEW_LIST_ITEM_VALUE,
     DELETE_SHOPPING_LIST_ELEMENT, SET_DONE_STATUS, SET_LIKE_STATUS,
-    SET_SHOPPING_LIST_ERROR,
-    START_LOAD_SHOPPING_LIST,
     SUCCESS_GET_SHOPPING_LIST
 } from "../action-constants/shoppingConstants";
 import _ from 'lodash';
@@ -11,25 +9,12 @@ import uuid from 'react-uuid';
 
 const initialState = {
     shoppingList: [],
-    loading: false,
-    error: null,
     newListItemValue: 'Write item name...',
     newListItemCostValue: 'Write item cost...'
 }
 
 export const shoppingListReducer = (state = initialState, action) => {
-    switch (action.type){
-        case START_LOAD_SHOPPING_LIST:
-            return {
-                ...state,
-                loading: true
-            }
-        case SET_SHOPPING_LIST_ERROR:
-            return {
-                ...state,
-                loading: false,
-                error: action.error
-            }
+    switch (action.type) {
         case SUCCESS_GET_SHOPPING_LIST:
             return {
                 ...state,
