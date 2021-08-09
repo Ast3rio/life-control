@@ -12,10 +12,20 @@
     width: 600px;
     margin-right: 20px;
   }
+  &__checkbox{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+  }
   &__text{
     font-size: 2rem;
-    width: 400px;
     margin-left: 20px;
+    margin-right: 20px;
+  }
+  &__common{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
 

@@ -5,13 +5,13 @@ import Input from "../common/Input";
 import {changeCommonMoneyValue, setCommonMoney} from "../../redux/action-creators/financesCreators";
 import Button from "../common/Button";
 import {getCurrency} from "../../redux/action-creators/actionCreators";
+import Checkbox from "../common/Checkbox";
 
 const FinancesComponent = ({
                                app,
                                finances,
                                setCommonMoney,
-                               changeCommonMoneyValue,
-                               getCurrency
+                               changeCommonMoneyValue
                            }) => {
 
     const {commonMoney, commonMoneyValue} = finances;
@@ -47,14 +47,24 @@ const FinancesComponent = ({
                             onChange={changeCommonMoneyValue}
                         />
                     </div>
+                    <div className={styles.header__checkbox}>
+                        <Checkbox/> USD
+                        <Checkbox/> UAH
+                    </div>
                     <Button
                         label={'Add money'}
                         onClick={() => addCommonMoney(commonMoney, commonMoneyValue)}
                     />
                 </div>
-                <p className={styles.header__text}>
-                    Common money: <span className={styles.accent}>{commonMoney * currencyUSDtoUAH} UAH</span>
-                </p>
+                <div className={styles.header__common}>
+                    <p className={styles.header__text}>
+                        Common money: <span className={styles.accent}>{commonMoney * currencyUSDtoUAH} UAH</span>
+                    </p>
+                    <div className={styles.header__checkbox}>
+                        <Checkbox/> USD
+                        <Checkbox/> UAH
+                    </div>
+                </div>
             </header>
         </section>
     );
