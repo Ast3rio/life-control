@@ -1,5 +1,5 @@
 import {
-    CLEAR_LOADING_AND_ERROR,
+    CLEAR_LOADING_AND_ERROR, SET_CURRENCY_TIME_UPDATE,
     SET_CURRENCY_USD_TO_UAH,
     SET_ERROR_MESSAGE,
     SET_LOADING
@@ -8,7 +8,8 @@ import {
 const initialState = {
     loading: false,
     error: null,
-    currencyUSDtoUAH: 26.81
+    currencyUSDtoUAH: 26.81,
+    currencyTimeUpdate: ''
 }
 
 export const appReducer = (state = initialState, action) => {
@@ -35,6 +36,11 @@ export const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currencyUSDtoUAH: action.value
+            }
+        case SET_CURRENCY_TIME_UPDATE:
+            return {
+                ...state,
+                currencyTimeUpdate: action.time
             }
         default:
             return state;
