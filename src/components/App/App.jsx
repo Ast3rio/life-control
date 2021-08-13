@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './App.module.scss';
 import Header from "../Header";
 import AppRouter from "./AppRouter";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {getCurrency} from "../../redux/action-creators/actionCreators";
 
 export const App = () => {
 
-    const app = useSelector(state => state.app)
+    const app = useSelector(state => state.app);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCurrency('USD', 'UAH'))
+    }, [dispatch])
 
     const {loading, error} = app;
 
