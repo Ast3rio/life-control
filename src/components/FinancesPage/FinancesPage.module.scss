@@ -1,0 +1,36 @@
+@import "src/style/vars";
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__form{
+    display: flex;
+    align-items: center;
+  }
+  &__input{
+    width: 600px;
+    margin-right: 20px;
+  }
+  &__checkbox{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+  }
+  &__text{
+    font-size: 2rem;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  &__common{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.accent{
+  color: $mainColor;
+  font-weight: bold;
+  margin-left: 10px;
+}

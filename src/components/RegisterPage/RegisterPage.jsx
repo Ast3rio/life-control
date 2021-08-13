@@ -17,10 +17,10 @@ const RegisterPageComponent = ({
             <form className={styles.form}>
                 <h3 className={styles.title}>Register</h3>
                 <label htmlFor='email'>Email</label>
-                <Input name='email' value={email} onChange={(e) => setUserEmail(e.target.value)}/>
+                <Input name='email' value={email} onChange={setUserEmail}/>
                 <label htmlFor='password'>Password</label>
                 <Input type='password' name='password' value={password}
-                       onChange={(e) => setUserPassword(e.target.value)}/>
+                       onChange={setUserPassword}/>
                 <Button
                     label='Register'
                     className={styles.register_btn}

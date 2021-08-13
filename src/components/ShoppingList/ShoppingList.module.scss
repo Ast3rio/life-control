@@ -2,19 +2,23 @@
   padding: 40px 0;
 }
 
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
 .list{
-  width: 100%;
-  margin: 40px 0;
+  width: 75%;
 }
 
 .functional{
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
+  width: 20%;
+  &_title{
+    margin-top: 0;
+  }
 }
 
-.inputs{
-  margin-right: 40px;
-  width: 400px;
+.shopping_btn{
+  width: 100%;
 }
-
