@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './Checkbox.module.scss';
 
-export const Checkbox = () => {
-
-    const [active, setActive] = useState();
-
+export const Checkbox = ({type, status, onClick}) => {
     return (
         <div className={styles.checkbox}
-             onClick={() => setActive(current => !current)}
+             onClick={onClick}
         >
-            <div className={`${styles.wrapper} ${active && styles.active}`}>
+            <div className={`${styles.wrapper} ${type === status && styles.active}`}>
                 <input type="checkbox"/>
             </div>
         </div>

@@ -2,7 +2,11 @@ import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import styles from './FinancesPage.module.scss';
 import Input from "../common/Input";
-import {changeCommonMoneyValue, setCommonMoney} from "../../redux/action-creators/financesCreators";
+import {
+    changeCommonMoneyCurrency,
+    changeCommonMoneyValue,
+    setCommonMoney
+} from "../../redux/action-creators/financesCreators";
 import Button from "../common/Button";
 import {getCurrency} from "../../redux/action-creators/actionCreators";
 import Checkbox from "../common/Checkbox";
@@ -11,10 +15,11 @@ const FinancesComponent = ({
                                app,
                                finances,
                                setCommonMoney,
-                               changeCommonMoneyValue
+                               changeCommonMoneyValue,
+                               changeCommonMoneyCurrency
                            }) => {
 
-    const {commonMoney, commonMoneyValue} = finances;
+    const {commonMoney, commonMoneyValue, commonMoneyCurrency} = finances;
     const {currencyUSDtoUAH} = app;
 
     const addCommonMoney = (state, value) => {
@@ -29,12 +34,28 @@ const FinancesComponent = ({
         }
     }
 
+    const changeCommonMoney = (currency) => {
+        let result
+        if(currency === 'USD'){
+            result = Math.round((commonMoney / currencyUSDtoUAH)*100)/100;
+        }
+        if(currency === 'UAH'){
+            result = Math.round((commonMoney * currencyUSDtoUAH)*100)/100;
+        }
+        changeCommonMoneyCurrency(currency)
+        setCommonMoney(result)
+        localStorage.setItem('common_money', result.toString());
+        localStorage.setItem('currency', currency);
+    }
+
     useEffect(() => {
         const commonMoney = localStorage.getItem('common_money');
+        const currency = localStorage.getItem('currency');
         if (commonMoney) {
             setCommonMoney(+commonMoney);
         }
-    }, [setCommonMoney])
+        changeCommonMoneyCurrency(currency);
+    }, [setCommonMoney, changeCommonMoneyCurrency])
 
     return (
         <section className={styles.finances}>
@@ -47,22 +68,29 @@ const FinancesComponent = ({
                             onChange={changeCommonMoneyValue}
                         />
                     </div>
-                    <div className={styles.header__checkbox}>
-                        <Checkbox/> USD
-                        <Checkbox/> UAH
-                    </div>
                     <Button
-                        label={'Add money'}
+                        label={'Add common money'}
                         onClick={() => addCommonMoney(commonMoney, commonMoneyValue)}
                     />
                 </div>
                 <div className={styles.header__common}>
                     <p className={styles.header__text}>
-                        Common money: <span className={styles.accent}>{commonMoney * currencyUSDtoUAH} UAH</span>
+                        Common money:
+                        <span className={styles.accent}>
+                            { commonMoneyCurrency === 'USD' ? `${commonMoney} USD` : `${commonMoney} UAH`}
+                        </span>
                     </p>
                     <div className={styles.header__checkbox}>
-                        <Checkbox/> USD
-                        <Checkbox/> UAH
+                        <Checkbox
+                            type={'USD'}
+                            status={commonMoneyCurrency}
+                            onClick={() => changeCommonMoney('USD')}
+                        /> USD
+                        <Checkbox
+                            type={'UAH'}
+                            status={commonMoneyCurrency}
+                            onClick={() => changeCommonMoney('UAH')}
+                        /> UAH
                     </div>
                 </div>
             </header>
@@ -80,7 +108,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     setCommonMoney,
     changeCommonMoneyValue,
-    getCurrency
+    getCurrency,
+    changeCommonMoneyCurrency
 }
 
 export const Finances = connect(mapStateToProps, mapDispatchToProps)(FinancesComponent);
