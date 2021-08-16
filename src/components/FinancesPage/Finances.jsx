@@ -20,7 +20,7 @@ const FinancesComponent = ({
                            }) => {
 
     const {commonMoney, commonMoneyValue, commonMoneyCurrency} = finances;
-    const {currencyUSDtoUAH} = app;
+    const {currencyUSDtoUAH, currencyTimeUpdate} = app;
 
     const addCommonMoney = (state, value) => {
         if (state === 0) {
@@ -37,11 +37,12 @@ const FinancesComponent = ({
     const changeCommonMoney = (currency) => {
         let result
         if(currency === 'USD'){
-            result = Math.round((commonMoney / currencyUSDtoUAH)*100)/100;
+            result = commonMoney / currencyUSDtoUAH;
         }
         if(currency === 'UAH'){
-            result = Math.round((commonMoney * currencyUSDtoUAH)*100)/100;
+            result = commonMoney * currencyUSDtoUAH;
         }
+        result = Math.round(result*100)/100
         changeCommonMoneyCurrency(currency)
         setCommonMoney(result)
         localStorage.setItem('common_money', result.toString());
@@ -54,7 +55,9 @@ const FinancesComponent = ({
         if (commonMoney) {
             setCommonMoney(+commonMoney);
         }
-        changeCommonMoneyCurrency(currency);
+        if(currency) {
+            changeCommonMoneyCurrency(currency);
+        }
     }, [setCommonMoney, changeCommonMoneyCurrency])
 
     return (
@@ -94,6 +97,7 @@ const FinancesComponent = ({
                     </div>
                 </div>
             </header>
+            USD: {currencyUSDtoUAH} update: {currencyTimeUpdate}
         </section>
     );
 };

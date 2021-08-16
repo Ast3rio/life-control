@@ -4,6 +4,7 @@ import Header from "../Header";
 import AppRouter from "./AppRouter";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrency} from "../../redux/action-creators/actionCreators";
+import {loaderIco} from "../../assets/iconsConstants";
 
 export const App = () => {
 
@@ -22,7 +23,7 @@ export const App = () => {
             <Header/>
             <div className="container">
                 <main className={styles.content}>
-                    {loading ? <div>loading...</div> :
+                    {loading ? <div><img src={loaderIco} alt="loader"/></div> :
                         error ? <div>{error}</div> :
                             <AppRouter/>}
                 </main>
