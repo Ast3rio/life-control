@@ -44,10 +44,10 @@ const FinancesHeader = ({
                         status={commonMoneyCurrency}
                         onClick={() => changeCommonMoney({
                             currencyType: 'USD',
-                            currency,
+                            currency: currency,
                             common: commonMoney,
                             changeCurrencyType: changeCurrency,
-                            setMoney
+                            setCommonMoney: setMoney
                         })}
                     /> USD
                     <Checkbox
@@ -55,10 +55,10 @@ const FinancesHeader = ({
                         status={commonMoneyCurrency}
                         onClick={() => changeCommonMoney({
                             currencyType: 'UAH',
-                            currency,
+                            currency: currency,
                             common: commonMoney,
                             changeCurrencyType: changeCurrency,
-                            setMoney
+                            setCommonMoney: setMoney
                         })}
                     /> UAH
                 </div>
