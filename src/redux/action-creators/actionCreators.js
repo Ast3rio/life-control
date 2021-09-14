@@ -19,7 +19,7 @@ export const getCurrency = (fromCurrency, toCurrency) => dispatch => {
         console.log(res)
         dispatch(clearLoadingAndError())
         if (fromCurrency === 'USD' && toCurrency === 'UAH'){
-            dispatch(setCurrencyUSDtoUAH(res.data.result.UAH))
+            dispatch(setCurrencyUSDtoUAH(res.data.result.USD_UAH))
             dispatch(setCurrencyTimeUpdate(res.data.updated))
         }
     }

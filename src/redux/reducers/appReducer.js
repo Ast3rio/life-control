@@ -35,7 +35,7 @@ export const appReducer = (state = initialState, action) => {
         case SET_CURRENCY_USD_TO_UAH:
             return {
                 ...state,
-                currencyUSDtoUAH: action.value
+                currencyUSDtoUAH: Math.round(action.value*100)/100
             }
         case SET_CURRENCY_TIME_UPDATE:
             return {
