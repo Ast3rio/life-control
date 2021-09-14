@@ -23,7 +23,9 @@ export const App = () => {
             <Header/>
             <div className="container">
                 <main className={styles.content}>
-                    {loading ? <div><img src={loaderIco} alt="loader"/></div> :
+                    {loading ? <div>
+                            <img src={loaderIco} alt="loader"/>
+                        </div> :
                         error ? <div>{error}</div> :
                             <AppRouter/>}
                 </main>
