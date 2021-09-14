@@ -8,6 +8,7 @@ import {
 } from "../../redux/action-creators/financesCreators";
 import {getCurrency} from "../../redux/action-creators/actionCreators";
 import FinancesHeader from "./FinancesHeader/FinancesHeader";
+import {CurrencyList} from "../common/CurrencyList/CurrencyList";
 
 
 const FinancesComponent = ({
@@ -40,7 +41,7 @@ const FinancesComponent = ({
                 currency={currencyUSDtoUAH}
                 setMoney={setCommonMoney}
             />
-            USD: {currencyUSDtoUAH} update: {currencyTimeUpdate}
+            <CurrencyList currency={currencyUSDtoUAH} date={currencyTimeUpdate} />
         </section>
     );
 };

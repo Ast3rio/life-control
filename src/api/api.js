@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const baseURL = 'http://localhost:4000/api';
-export const convertApi = 'https://free.currconv.com';
-export const convertApiKey = '24902e6882bd4fdf7f4b';
+export const convertApi = 'https://api.fastforex.io/';
+export const convertApiKey = 'c3bc1cadee-1ad458dd4a-qxsjrq';
 
 export const combineURLs = (baseURL, url) => {
     return url ?
@@ -26,7 +26,7 @@ export const getRequest = ({url, success, setError}) => {
 }
 
 export const convertCurrency = (fromCurrency, toCurrency, success, setError) => {
-    axios.get(`${convertApi}/api/v7/convert?q=${fromCurrency}_${toCurrency},${toCurrency}_${fromCurrency}&compact=ultra&callback=sampleCallback&apiKey=${convertApiKey}`)
+    axios.get(`${convertApi}fetch-one?from=${fromCurrency}&to=${toCurrency}&api_key=${convertApiKey}`)
         .then(res => success(res))
-        .catch(err => console.log(err))
+        .catch(err => setError(err.message))
 }

@@ -75,7 +75,7 @@ export const Input = ({
 Input.propTypes = {
     type: PropTypes.string,
     name: PropTypes.string,
-    value: PropTypes.string,
+    value: PropTypes.string || PropTypes.number,
     defaultValue: PropTypes.string,
     validationType: PropTypes.string,
     validationSettings: PropTypes.object,

@@ -13,9 +13,6 @@ const AuthPageComponent = ({
                                setUserPassword,
                                postCurrentUser
                            }) => {
-
-    console.log(email)
-
     return (
         <section className={styles.auth}>
             <form className={styles.form}>

@@ -1,18 +1,23 @@
 import React from 'react';
 import {connect} from "react-redux";
 import styles from './MainPage.module.scss';
+import {CurrencyList} from "../common/CurrencyList/CurrencyList";
 
+const MainPageComponent = ({app}) => {
 
-
-const MainPageComponent = () => {
+    const {currencyUSDtoUAH, currencyTimeUpdate} = app;
 
     return (
         <section className={styles.main}>
-            <div className={styles.info}>
-                Це головна на якій повинно бути дуже багато корисноЇ інфи, але я ще не знаю якоЇ
-            </div>
+            <CurrencyList currency={currencyUSDtoUAH} date={currencyTimeUpdate} />
         </section>
     );
 };
 
-export const MainPage = connect()(MainPageComponent);
+const mapStateToProps = (state) => {
+    return {
+        app: state.app
+    }
+}
+
+export const MainPage = connect(mapStateToProps)(MainPageComponent);

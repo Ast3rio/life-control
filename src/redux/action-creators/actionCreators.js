@@ -25,6 +25,10 @@ export const getCurrency = (fromCurrency, toCurrency) => dispatch => {
     }
 
     const setError = (error) => {
+        if(error.slice(-3) !== 401){
+            dispatch(clearLoadingAndError())
+            return
+        }
         dispatch(setErrorMessage(error))
     }
 
