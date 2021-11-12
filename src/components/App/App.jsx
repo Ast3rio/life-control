@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
-import styles from './App.module.scss';
 import Header from "../Header";
-import AppRouter from "./AppRouter";
+import {AppRouter} from "./AppRouter";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrency} from "../../redux/action-creators/actionCreators";
 import {loaderIco} from "../../assets/iconsConstants";
@@ -21,13 +20,13 @@ export const App = () => {
     if (error) return error
 
     return (
-        <div className={styles.app}>
+        <ContentWrapper>
             <Header/>
             <Container>
                 <ContentWrapper>
                     <AppRouter/>
                 </ContentWrapper>
             </Container>
-        </div>
+        </ContentWrapper>
     );
 };
