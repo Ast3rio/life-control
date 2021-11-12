@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import styles from './MainPage.module.scss';
 import {CurrencyList} from "../common/CurrencyList/CurrencyList";
+import {Sidebar} from "../common/Sidebar/Sidebar";
 
 const MainPageComponent = ({app}) => {
 
@@ -9,7 +10,10 @@ const MainPageComponent = ({app}) => {
 
     return (
         <section className={styles.main}>
-            <CurrencyList currency={currencyUSDtoUAH} date={currencyTimeUpdate} />
+            <div>Main</div>
+            <Sidebar>
+                <CurrencyList currency={currencyUSDtoUAH} date={currencyTimeUpdate} />
+            </Sidebar>
         </section>
     );
 };
