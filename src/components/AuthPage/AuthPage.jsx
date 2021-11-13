@@ -1,14 +1,14 @@
 import React from 'react'
-import styles from './AuthPage.module.scss'
+import {useHistory} from 'react-router-dom'
 import Input from "../common/Input"
 import Button from "../common/Button"
-import {NavLink} from "react-router-dom"
 import {connect} from "react-redux"
 import {postCurrentUser, setUserEmail, setUserPassword} from "../../redux/action-creators/authCreators"
 import {ContentWrapper} from "../../styled/Common.styled"
-import {AuthFormWrapper} from "../../styled/forms/AuthForm.styled";
-import {MediumTitle} from "../../styled/Titles.styled";
-import {FormsLabel} from "../../styled/forms/CommonForms.styled";
+import {AuthButtonsWrapper, AuthFormWrapper} from "../../styled/forms/AuthForm.styled"
+import {MediumTitle} from "../../styled/Titles.styled"
+import {FormsLabel} from "../../styled/forms/CommonForms.styled"
+import {refreshForm} from "../../utils/formsFunctional"
 
 const AuthPageComponent = ({
                                email,
@@ -17,8 +17,13 @@ const AuthPageComponent = ({
                                setUserPassword,
                                postCurrentUser
                            }) => {
+
+    const history = useHistory()
+    const linkToRegister = () => history.push('/register')
+    const post = () => postCurrentUser(email, password)
+
     return (
-        <ContentWrapper>
+        <ContentWrapper onClick={refreshForm}>
             <AuthFormWrapper>
                 <MediumTitle>{'Auth'}</MediumTitle>
                 <FormsLabel htmlFor='email'>{'Email'}</FormsLabel>
@@ -35,18 +40,16 @@ const AuthPageComponent = ({
                     type='password'
                     name='password'
                 />
-                <div className={styles.buttons}>
+                <AuthButtonsWrapper>
                     <Button
-                        onClick={() => {
-                            postCurrentUser(email, password);
-                        }}
-                        label='Log-in'
-                        className={styles.auth_btn}
+                        onClick={post}
+                        label={'Log-in'}
                     />
-                    <div className={styles.link}>
-                        <NavLink to='/register'>Register</NavLink>
-                    </div>
-                </div>
+                    <Button
+                        onClick={linkToRegister}
+                        label={'Register'}
+                    />
+                </AuthButtonsWrapper>
             </AuthFormWrapper>
         </ContentWrapper>
     );

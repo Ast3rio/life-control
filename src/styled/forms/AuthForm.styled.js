@@ -12,3 +12,11 @@ export const AuthFormWrapper = styled.form`
   border-radius: 20px;
   padding: 40px;
 `
+
+export const AuthButtonsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+`

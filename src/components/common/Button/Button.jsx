@@ -1,18 +1,14 @@
 import React from 'react';
-import styles from './Button.module.scss';
 import PropTypes from 'prop-types';
+import {MainButton} from "../../../styled/Buttons.styled";
 
-export const Button = ({disabled = false, onClick, label, className = ''}) => {
-    return <button
-        className={`${styles.btn} ${className}`}
+export const Button = ({disabled = false, onClick, label}) => {
+    return <MainButton
         disabled={disabled}
-        onClick={(e) => {
-            e.preventDefault();
-            onClick && onClick();
-        }}
+        onClick={onClick}
     >
         {label}
-    </button>;
+    </MainButton>;
 };
 
 Button.propTypes = {
@@ -21,4 +17,3 @@ Button.propTypes = {
     className: PropTypes.string,
     onClick: PropTypes.func
 }
-
