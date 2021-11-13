@@ -7,6 +7,7 @@ export const Container = styled.div`
 `
 
 export const ContentWrapper = styled.main`
+  position: relative;
    width: 100%;
    min-height: 100vh;
 `

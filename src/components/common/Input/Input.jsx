@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Input.module.scss';
 import PropTypes from 'prop-types';
+import {InputStyles} from "../../../styled/forms/CommonForms.styled";
 
 export const Input = ({
                           type = "text",
@@ -58,18 +58,17 @@ export const Input = ({
         }
     }
 
-    return <div>
-        <input
+    return <>
+        <InputStyles
             type={type}
             name={name}
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            className={styles.input}
             onFocus={onFocus}
             onBlur={onBlur}
         />
         {validationType === 'number' && <div>{new NumberValidation(minLength, maxLength).setValidation(value)}</div> }
-    </div>
+    </>
 };
 
 Input.propTypes = {
