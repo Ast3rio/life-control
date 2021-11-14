@@ -1,15 +1,17 @@
 import React from 'react';
-import styles from './Checkbox.module.scss';
+import {CheckboxElement, CheckboxWrapper} from "../../../styled/Checkbox.styled";
 
 export const Checkbox = ({type, status, onClick}) => {
     return (
-        <div className={styles.checkbox}
+        <CheckboxWrapper
              onClick={onClick}
         >
-            <div className={`${styles.wrapper} ${type === status && styles.active}`}>
+            <CheckboxElement
+                type={type}
+                status={status}
+            >
                 <input type="checkbox"/>
-            </div>
-        </div>
+            </CheckboxElement>
+        </CheckboxWrapper>
     );
 };
-

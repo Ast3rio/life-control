@@ -1,29 +1,24 @@
 import React, {useState} from 'react';
-import styles from './IconElement.module.scss';
 import PropTypes from 'prop-types';
+import {IconImage, IconWrapper} from "../../../styled/IconStyles.styled";
 
 export const IconElement = ({img = '', alt = '', onClick, filter = '', status = false}) => {
 
     const [active, setActive] = useState(status);
 
+    const handleClick = () => {
+        onClick();
+        setActive(current => !current)
+    }
+
     return (
-        <div className={styles.icon} onClick={() => {
-            onClick && onClick();
-            setActive(current => !current)
-        }}>
-            {filter === 'main' && <img
-                className={`${styles.img} ${active && styles.active_main}`}
-                src={img} alt={alt}
-            />}
-            {filter === 'red' && <img
-                className={`${styles.img} ${active && styles.active_red}`}
-                src={img} alt={alt}
-            />}
-            {filter === '' && <img
-                className={`${styles.img}`}
-                src={img} alt={alt}
-            />}
-        </div>
+        <IconWrapper onClick={handleClick}>
+            <IconImage
+                src={img}
+                alt={alt}
+                filter={active && filter}
+            />
+        </IconWrapper>
     );
 };
 
@@ -34,6 +29,3 @@ IconElement.propTypes = {
     status: PropTypes.bool,
     onClick: PropTypes.func
 }
-
-
-

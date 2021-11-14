@@ -1,16 +1,16 @@
 import React from 'react';
-import styles from './CurrencyList.module.scss';
+import {CurrencyListWrapper} from "../../../styled/CurrencyListStyles.styled";
 
 export const CurrencyList = ({currency, date}) => {
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.currency}>
+        <CurrencyListWrapper>
+            <div>
                 USD: {currency}
             </div>
-            <div className={styles.time}>
+            <div>
                 update: {date || 'didn`t update'}
             </div>
-        </div>
+        </CurrencyListWrapper>
     );
 };
 
