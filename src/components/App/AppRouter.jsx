@@ -7,25 +7,22 @@ import {useSelector} from "react-redux";
 const RouteElement = ({array, redirect}) => {
     return (
         <Switch>
-            {array.map(({path , component}) =>
-                <Route exact key={path} path={path} component={component} />
+            {array.map(({path, component}) =>
+                <Route exact key={path} path={path} component={component}/>
             )}
-            <Redirect to={redirect} />
+            <Redirect to={redirect}/>
         </Switch>
     )
 }
 
-const AppRouter = () => {
+export const AppRouter = () => {
 
     const isAuth = useSelector(state => state.auth.isAuth);
 
     return (
-        isAuth ?
-            <RouteElement array={privateRoutes} redirect={ERROR_PAGE_ROUTE} />
-            :
-            <RouteElement array={publicRoutes} redirect={AUTH_PAGE_ROUTE} />
+        <RouteElement
+            array={isAuth ? privateRoutes : publicRoutes}
+            redirect={isAuth ? ERROR_PAGE_ROUTE : AUTH_PAGE_ROUTE}
+        />
     );
 };
-
-export default AppRouter;
-

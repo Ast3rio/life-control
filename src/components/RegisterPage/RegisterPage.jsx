@@ -1,9 +1,13 @@
 import React from 'react';
-import styles from './RegisterPage.module.scss';
 import Input from "../common/Input";
 import Button from "../common/Button";
 import {connect} from "react-redux";
 import {postNewUser, setUserEmail, setUserPassword} from "../../redux/action-creators/authCreators";
+import {ContentWrapper} from "../../styled/Common.styled";
+import {AuthButtonsWrapper, AuthFormWrapper} from "../../styled/forms/AuthForm.styled";
+import {refreshForm} from "../../utils/formsFunctional";
+import {MediumTitle} from "../../styled/Titles.styled";
+import {FormsLabel} from "../../styled/forms/CommonForms.styled";
 
 const RegisterPageComponent = ({
                                    email,
@@ -12,24 +16,34 @@ const RegisterPageComponent = ({
                                    setUserEmail,
                                    setUserPassword
                                }) => {
+
+    const post = () => postNewUser(email, password)
+
     return (
-        <section className={styles.register}>
-            <form className={styles.form}>
-                <h3 className={styles.title}>Register</h3>
-                <label htmlFor='email'>Email</label>
-                <Input name='email' value={email} onChange={setUserEmail}/>
-                <label htmlFor='password'>Password</label>
-                <Input type='password' name='password' value={password}
-                       onChange={setUserPassword}/>
-                <Button
-                    label='Register'
-                    className={styles.register_btn}
-                    onClick={() =>
-                        postNewUser(email, password)
-                    }
+        <ContentWrapper>
+            <AuthFormWrapper onClick={refreshForm}>
+                <MediumTitle>{'Register'}</MediumTitle>
+                <FormsLabel htmlFor='email'>{'Email'}</FormsLabel>
+                <Input
+                    name='email'
+                    value={email}
+                    onChange={setUserEmail}
                 />
-            </form>
-        </section>
+                <FormsLabel htmlFor='password'>{'Password'}</FormsLabel>
+                <Input
+                    type='password'
+                    name='password'
+                    value={password}
+                    onChange={setUserPassword}
+                />
+                <AuthButtonsWrapper>
+                    <Button
+                        label={'Register'}
+                        onClick={post}
+                    />
+                </AuthButtonsWrapper>
+            </AuthFormWrapper>
+        </ContentWrapper>
     );
 };
 
