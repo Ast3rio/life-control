@@ -4,7 +4,9 @@ import {AppRouter} from "./AppRouter";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrency} from "../../redux/action-creators/actionCreators";
 import {loaderIco} from "../../assets/iconsConstants";
-import {Container, ContentWrapper} from "../../styled/Common.styled";
+import {Container, ContentWrapper, ContextFlexWrapper} from "../../styled/Common.styled";
+import {Sidebar} from "../common/Sidebar/Sidebar";
+import {CurrencyList} from "../common/CurrencyList/CurrencyList";
 
 export const App = () => {
 
@@ -24,9 +26,15 @@ export const App = () => {
             <Header/>
             <Container>
                 <ContentWrapper>
-                    <AppRouter/>
+                    <ContextFlexWrapper>
+                        <AppRouter/>
+                        <Sidebar>
+                            <CurrencyList currency={app.currencyUSDtoUAH}/>
+                        </Sidebar>
+                    </ContextFlexWrapper>
                 </ContentWrapper>
             </Container>
         </ContentWrapper>
     );
 };
+

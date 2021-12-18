@@ -15,7 +15,7 @@ export const ListItem = ({
                              deleteElement
                          }) => {
     return (
-        <li key={id} className={styles.list_item}>
+        <li className={styles.list_item}>
             <div className={styles.left}>
                 <IconElement
                     status={done}
@@ -26,9 +26,7 @@ export const ListItem = ({
                 />
                 <span className={styles.item}>{item}</span>
             </div>
-            <div>
-                0 / {cost}
-            </div>
+            <div> {`0 / ${cost}`} </div>
             <div className={styles.icons}>
                 <IconElement
                     img={crossIco}

@@ -1,3 +1,7 @@
+@import "src/style/vars";
+
 .aside{
   width: 20%;
+  border-left: 1px solid $mainColor;
+  height: 100vh;
 }

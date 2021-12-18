@@ -8,8 +8,6 @@ import {
 } from "../../redux/action-creators/financesCreators";
 import {getCurrency} from "../../redux/action-creators/actionCreators";
 import FinancesHeader from "./FinancesHeader/FinancesHeader";
-import {CurrencyList} from "../common/CurrencyList/CurrencyList";
-
 
 const FinancesComponent = ({
                                app,
@@ -19,7 +17,7 @@ const FinancesComponent = ({
                                changeCommonMoneyValue
                            }) => {
 
-    const {currencyUSDtoUAH, currencyTimeUpdate} = app;
+    const {currencyUSDtoUAH} = app;
 
     useEffect(() => {
         const commonMoney = localStorage.getItem('common_money');
@@ -41,7 +39,6 @@ const FinancesComponent = ({
                 currency={currencyUSDtoUAH}
                 setMoney={setCommonMoney}
             />
-            <CurrencyList currency={currencyUSDtoUAH} date={currencyTimeUpdate} />
         </section>
     );
 };

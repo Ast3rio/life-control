@@ -6,8 +6,12 @@ export const Container = styled.div`
    padding: 0 60px;
 `
 
-export const ContentWrapper = styled.main`
-  position: relative;
-   width: 100%;
-   min-height: 100vh;
+export const ContentWrapper = styled.div`
+  width: 100%;
+  min-height: 100vh;
+`
+
+export const ContextFlexWrapper = styled.div`
+  display:flex;
+  justify-content: space-between;
 `
